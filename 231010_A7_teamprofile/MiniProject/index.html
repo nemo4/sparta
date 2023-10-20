@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>끝판왕 모집</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+
+    * {
+      font-family: "Noto Sans KR", sans-serif;
+    }
+
+    /* 메인 타이틀 부분 */
+    .main {
+      color: white;
+      height: 400px;
+
+      background-image: url("https://c.wallhere.com/photos/a7/74/1920x1080_px_Code_coding_programming_Simple_Background-1291425.jpg!d");
+      background-position: center;
+      background-size: cover;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .main>button {
+      margin: 50px auto 0px auto;
+      width: 500px;
+    }
+
+    /* 카드 부분 */
+    body {
+      background-color: black;
+    }
+
+    .team {
+      width: 1200px;
+      margin: 20px auto 20px auto;
+
+      flex-direction: row;
+    }
+
+    #junsik {
+      cursor: pointer;
+    }
+
+    #byungok {
+      cursor: pointer;
+    }
+
+    #taeki {
+      cursor: pointer;
+    }
+
+    .line {
+      width: 50%;
+      height: 5px;
+      background-color: white;
+
+      margin: 50px auto 50px auto;
+    }
+
+    .mycards {
+      width: 1200px;
+      margin: 20px auto 20px auto;
+    }
+
+    .mypostingbox {
+      /* width: 500px; */
+      /* margin: 20px auto 0px auto; */
+      border: 1px solid white;
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .form-floating>input {
+      background-color: transparent;
+      /* color: white; */
+    }
+
+    .input-group>label {
+      background-color: transparent;
+      /* color: white; */
+    }
+
+    .mypostingbox>button {
+      width: 100%;
+    }
+
+    .full-img {
+      height: 400px;
+      background-size: contain;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background-color: #e0e0e0;
+    }
+
+    .cheering {
+      width: 1200px;
+      margin: 30px auto 30px auto;
+
+      color: white;
+      border-radius: 5px;
+
+    }
+
+    /* 요고는 없어도 되는것 같습니다. 
+    #textarea {
+      width: 100%;
+      height: 100px;
+      margin: 10px 50px 10px 50px;
+    } */
+
+    /* class=chrbox 에서 이미 글자색을 흰색으로 먹여서 굳이 필요 없어 보입니다.
+    #chrcmt {
+      color: white;
+    }
+    */
+
+    .cheer_cmt {
+      color: black;
+      width: 1200px;
+      margin: 100px auto 30px auto;
+    }
+
+    /* 코멘트 배경색 , 글자색*/
+    #cmtcard div.card-body {
+      background-color: black;
+    }
+
+    #cmtcard p.card-text {
+      color: white;
+    }
+  </style>
+  <script type='module'>
+    // Firebase SDK 라이브러리 가져오기
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyAOZeJEOSU4wdrOjK6OsZYKL8UwtkzTHcg",
+      authDomain: "sparta-b91fd.firebaseapp.com",
+      projectId: "sparta-b91fd",
+      storageBucket: "sparta-b91fd.appspot.com",
+      messagingSenderId: "834281952976",
+      appId: "1:834281952976:web:1b84daa1f2f76a212a30d5",
+      measurementId: "G-DMKSCTB892"
+    };
+
+
+    // Firebase 인스턴스 초기화
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+
+
+
+    $("#postingbtn").click(async function () {
+      let image = $('#image').val();
+      let title = $('#title').val();
+      let page = $('#page').val();
+      let comment = $('#comment').val();
+
+      // 이미지가 파일로 업로드시 base64 처리
+      if ($('#image').attr('type') == 'file') {
+        image = await uploadImage($('#image'));
+      }
+
+      let doc = {
+        'image': image,
+        'title': title,
+        'page': page,
+        'comment': comment
+      };
+      await addDoc(collection(db, "movies"), doc);
+      alert('저장완료');
+      window.location.reload();
+    })
+
+    let url = "http://spartacodingclub.shop/sparta_api/weather/seoul";
+    fetch(url).then(res => res.json()).then(data => {
+      let temp = data['temp'];
+
+      if (temp > 23) {
+        $('#temperature').text('더워도');
+      } else {
+        $('#temperature').text('추워도');
+      }
+    })
+
+    // 도전자 정보 입력 부분
+    let docs = await getDocs(collection(db, "movies"));
+    docs.forEach((doc) => {
+      let row = doc.data();
+
+      let image = row['image'];
+      let title = row['title'];
+      let comment = row['comment'];
+      let page = row['page'];
+
+      let temp_html = `   
+      
+      <div class="col">
+        <div class="card h-100">
+          <a href = "${page}" target="_blank">
+            <div class="full-img" style="background-image: url('${image}');"></div>
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">${title}</h5>
+            <p class="card-text">${comment}</p>
+          </div>
+        </div>
+      </div>`;
+      $('#card').append(temp_html);
+
+    });
+
+    // 팀원 카드 내 이미지 클릭 시 새창에서 개인 페이지 띄우기
+    $('#junsik').click(function () {
+      url = "https://geniusjun6.tistory.com/";
+      window.open(url)
+    })
+
+    $("#savebtn").click(async function () {
+      $('#postingbox').toggle();
+    })
+    // 코멘트 작성 스크립트
+    $("#cheerbtn").click(async function () {
+      let temp = $("#floatingTextarea").val();
+      let doc = {
+        'comment': temp
+      }
+
+      // 기존에는 값을 입력하지 않아도 데이터가 쌓여있어서 조건문을 추가했습니다.
+      if (typeof temp == null || temp == "undefined" || temp == "") {
+        alert('응원 메시지를 입력해 주세요.')
+      } else {
+        await addDoc(collection(db, "comments"), doc);
+        alert('응원의 한마디 전송 성공');
+        window.location.reload();
+      }
+    })
+
+    docs = await getDocs(collection(db, "comments"));
+    docs.forEach((doc) => {
+      let row = doc.data();
+      let comment = row['comment'];
+      let temp_html = `<div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <p class="card-text">${comment}</p>
+          </div>
+        </div>
+      </div>`;
+      $("#cmtcard").append(temp_html);
+    })
+  </script>
+  <script>
+    // 이미지 변환 함수
+    const convertBase64 = (file) => {
+      return new Promise((resolve, reject) => {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(file);
+
+        fileReader.onload = () => {
+          resolve(fileReader.result);
+        };
+
+        fileReader.onerror = (error) => {
+          reject(error);
+        };
+      });
+    };
+
+    // 이미지처리
+    const uploadImage = async (obj) => {
+      const file = obj[0].files[0];
+      return await convertBase64(file);
+    };
+
+  </script>
+</head>
+
+<body>
+  <!-- 메인(포스터) 부분 : 배경 이미지, 내용, 버튼 수정 담당자 : 문준식 -->
+  <div class="main">
+    <h1>자바스크립트 <span style="color:red">끝판왕</span> 모집</h1>
+    <p></p>
+    <h5>자바스크립트, Node 마스터를 찾습니다!</h5>
+    <p></p>
+    <h3><span style="color:red">끝판왕 개발자</span>가 되기 위해 도전하세요!</h3>
+    <p></p>
+    <p>우리는 <span id="temperature" style="color:red"></span> 도전을 멈추지 않습니다 !</p>
+    <button id="applybtn" type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+      data-bs-target="#applymodal">끝판왕 도전하기!</button>
+
+  </div>
+
+  <!-- 신청자 프로필 받는 부분(모달창으로 띄울 수는 없을까요?) : 요소 구성(개인 페이지), 버튼 수정, 이미지 업로드 기능 추가 담당자 : 고병옥 -->
+  <!-- Modal -->
+  <div class="modal fade" id="applymodal" tabindex="-1" aria-labelledby="applymodalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="applymodalLabel">도전자 지원 양식</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mypostingbox" id="postingbox">
+            <div class="mb-3">
+              <label for="form-label">도전자 사진 (840*1,200px 권장)</label>
+              <input type="file" class="form-control" id="image" placeholder="도전자 이미지" />
+            </div>
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="title" placeholder="도전자 이름" />
+              <label for="floatingInput">도전자 이름</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="page" placeholder="개인 페이지" />
+              <label for="floatingInput">개인 페이지</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="comment" placeholder="각오 한마디" />
+              <label for="floatingInput">각오 한마디</label>
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+          <button id="postingbtn" type="button" class="btn btn-secondary">지원하기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 프로필 카드 부분 : 팀원 카드 고정, 신청자 프로필 입력 시 자동 추가, 카드 클릭 시 개인 페이지 이동   담당자 : 오예찬 -->
+  <div class="team">
+    <h1 style="color: white;">[8조 도전자]</h1>
+    <p></p>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <!-- 문준식 카드 -->
+      <div class="col">
+        <div class="card h-100">
+          <div id="junsik" class="full-img" style="background-image: url('https://i.ibb.co/18mCLwq/image.jpg')"
+            style="cursor:pointer">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">문준식</h5>
+            <p class="card-text">끝판왕이 될때까지 멈추지 않는다.</p>
+          </div>
+        </div>
+      </div>
+      <!-- 고병옥 카드 -->
+      <div class="col">
+        <div class="card h-100">
+          <div id="byungok" class="full-img" style="background-image: url('https://i.ibb.co/MGkXQcm/image.png');">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">고병옥</h5>
+            <p class="card-text">천천히 그리고 단단하게</p>
+          </div>
+        </div>
+      </div>
+      <!-- 이태기 카드 -->
+      <div class="col">
+        <div class="card h-100">
+          <div id="taeki" class="full-img" style="background-image: url('');">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">이태기</h5>
+            <p class="card-text">각오 한마디</p>
+          </div>
+        </div>
+      </div>
+      <!-- I wan't you 포스터 -->
+      <div class="col">
+        <div class="card h-100">
+          <div class="full-img"
+            style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/c/c0/I_want_you.jpg');">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">다음 도전자는 너!</h5>
+            <p></p>
+            <p class="card-text">지금 바로 끝판왕에 도전하세요 !</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="line"></div>
+
+  <div class="mycards">
+    <h2 style="color: white;">[신규 도전자]</h2>
+    <p></p>
+    <div id="card" class="row row-cols-1 row-cols-md-4 g-4">
+    </div>
+  </div>
+
+  <!-- 응원하기 입력 부분 : 응원 내용 적기, 응원하기 버튼, 응원 내용 리스트 형으로 표현  담당자 : 이태기  -->
+  <!-- 이거저것 만져보다가.. 자꾸 이상하게 나와서 제가 부트스트랩으로 따로 조정했어요 ㅠ by.준식  -->
+  <div class="cheering">
+    <label for="exampleInputEmail1" class="form-label">도전자에게 응원의 한마디를 남겨주세요!</label>
+    <input type="email" class="form-control" id="floatingTextarea" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text" style="color: gray;">당신의 한마디가 도전자에게 큰 힘이 됩니다.</div>
+    <button type="submit" id=cheerbtn class="btn btn-outline-light" style="float:right">응원하기</button>
+  </div>
+
+  <!-- 리스트의 배경색을 투명 or 검정으로하고 텍스트만 나오게 할 수 있을까요? -->
+  <div class="cheer_cmt">
+    <div id="cmtcard" class="row row-cols-1 row-cols-md-1 g-4">
+    </div>
+  </div>
+</body>
+
+</html>
