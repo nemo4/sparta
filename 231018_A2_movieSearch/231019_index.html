@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>231018</title>
+    <style>
+        .card {
+            border: solid 1px black;
+            width: 30%;
+            margin: 4px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        const options = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZTIzYzhiYmQ5ZjQ0Yjg4NWRmMzNmMThhMzFiODI2YiIsInN1YiI6IjY1MmY3NTI3Y2FlZjJkMDExY2M3NjQwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Y2O9RbcGo7qPJ-yEOEqGlxpeVLpN8wEti5QxngyiAYo'
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', function () {
+            callMovieListsPopular(makeList);
+
+            document.getElementById('searchBtn').addEventListener('click', function () {
+                callSearchMovie(makeList);
+            });
+
+            document.querySelector('#searchTitle').addEventListener('keyup', function (e){
+                if(e.keyCode == 13){
+                    document.querySelector('#searchBtn').click();
+                }
+            });
+
+        });
+
+        function callMovieListsPopular(callback) {
+            fetch('https://api.themoviedb.org/3/movie/top_rated?language=ko-KR&page=1', options)
+                .then(response => response.json())
+                .then(response => callback(response))
+                .catch(err => console.error(err));
+        }
+
+        function callSearchMovie(callback) {
+            let query = document.querySelector('#searchTitle').value;
+            console.log(query);
+            // 한글처리
+            query = encodeURI(query);
+
+            fetch(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=ko-KR&page=1`, options)
+                .then(response => response.json())
+                .then(response => callback(response))
+                .catch(err => console.error(err));
+        }
+
+        function makeList(response) {
+            console.log(response);
+
+            let resultList = response.results;
+            let cardList = document.querySelector('#cardList');
+            let tempHtml;
+
+            cardList.innerHTML = '';
+
+            resultList.map((result) => {
+                console.log(result);
+                tempHtml = `
+                    <div class="card">
+                        <img src="https://image.tmdb.org/t/p/w500/${result.backdrop_path}" onerror="this.src='https://www.adecco.co.kr/media/COMMON/images/no-image.png'"  style="width: 100%">
+                        <h4>${result.title}</h4>
+                        <p>${result.overview}</p>
+                    </div>
+                `;
+                cardList.innerHTML += tempHtml;
+            });
+
+            document.querySelector('#searchTitle').focus();
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1 style="text-align: center;">영화검색</h1>
+    </header>
+    <main>
+        <div style="text-align: center;">
+            <input type="text" id="searchTitle" placeholder="제목">
+            <input type="button" id="searchBtn" value="검색">
+        </div>
+        <div id="cardList" style="display: flex; flex-wrap: wrap; justify-content: center;">
+        </div>
+    </main>
+    <footer>
+        <p style="text-align: center;">copyright nemo</p>
+    </footer>
+</body>
+
+</html>
