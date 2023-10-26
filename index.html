@@ -11,14 +11,34 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
 
+
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100&family=VT323&display=swap"
+        rel="stylesheet">
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
+    <style>
+        .btn-pixel-xs {
 
+            font-family: 'IBM Plex Sans KR', sans-serif;
+            font-family: 'VT323', monospace;
+            padding: 0rem 0.2rem;
+            font-size: .875rem;
+        }
+    </style>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
         });
+
+        function goUrl(url) {
+            window.location.href = url;
+        }
+
+        function goPopup(url) {
+            window.open(url);
+        }
     </script>
 </head>
 
@@ -49,8 +69,7 @@
                     <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 g-3 mb-3">
                         <div class="col">
                             <div class="card">
-                                <img src="https://srv.carbonads.net/static/30242/cfae0bcc9eeb2652dd375b40461352efdb6057ba"
-                                    class="card-img-top" alt="...">
+                                <img src="../sparta/images/no-img_2.png" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">오예찬(팀장)</h5>
                                     <p class="card-text">랄루</p>
@@ -59,8 +78,7 @@
                         </div>
                         <div class="col">
                             <div class="card">
-                                <img src="https://srv.carbonads.net/static/30242/cfae0bcc9eeb2652dd375b40461352efdb6057ba"
-                                    class="card-img-top" alt="...">
+                                <img src="../sparta/images/A02_고병옥_2.png" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">고병옥</h5>
                                     <p class="card-text">랄루</p>
@@ -69,18 +87,16 @@
                         </div>
                         <div class="col">
                             <div class="card">
-                                <img src="https://srv.carbonads.net/static/30242/cfae0bcc9eeb2652dd375b40461352efdb6057ba"
-                                    class="card-img-top" alt="...">
+                                <img src="../sparta/images/A07_문준식_2.png" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                    <h5 class="card-title">문진식</h5>
+                                    <h5 class="card-title">문준식</h5>
                                     <p class="card-text">랄루</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col">
                             <div class="card">
-                                <img src="https://srv.carbonads.net/static/30242/cfae0bcc9eeb2652dd375b40461352efdb6057ba"
-                                    class="card-img-top" alt="...">
+                                <img src="../sparta/images/no-img_2.png" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">이태기</h5>
                                     <p class="card-text">랄루</p>
@@ -93,14 +109,15 @@
                     <div class="card mb-3">
                         <div class="row">
                             <div class="col-md-4">
-                                <img src="https://srv.carbonads.net/static/30242/cfae0bcc9eeb2652dd375b40461352efdb6057ba"
-                                    class="img-fluid" alt="...">
+                                <img src="../sparta/images/2023-10-26_140124.png" class="img-fluid" alt="...">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <h5 class="card-title">팀소개 프로젝트</h5>
+                                    <button type="button" class="btn btn-primary btn-pixel-xs">A07</button>
                                     <p class="card-text">
-                                        <a href="../sparta/231004_A7_teamprofile/MiniProject/index.html">231004_A7_teamprofile</a>
+                                        <a
+                                            href="../sparta/231004_A7_teamprofile/MiniProject/index.html">231004_A7_teamprofile</a>
                                     </p>
                                 </div>
                             </div>
@@ -109,68 +126,74 @@
                 </div>
             </div>
 
-            
+
             <div class="row mb-3">
                 <div class="h-100 p-5 bg-body-tertiary border rounded-3">
                     <h2>A02 김효진</h2>
                     <div class="row row-cols-2 row-cols-sm-2 row-cols-md-5 g-3 mb-3">
                         <div class="col">
                             <div class="card">
-                                <img src="https://srv.carbonads.net/static/30242/cfae0bcc9eeb2652dd375b40461352efdb6057ba"
-                                    class="card-img-top" alt="...">
+                                <img src="../sparta/images/A02_김효진_2.png" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                    <h5 class="card-title">김효진(팀장)</h5>
-                                    <p class="card-text">INFJ</p>
-                                    <p class="card-text"><a href="https://velog.io/@jinee2021">BLOG</a></p>
-                                    <p class="card-text"><a href="https://github.com/hyojinkim2028">GIT</a></p>
+                                    <h5 class="card-title">김효진</h5>
+                                    <button type="button" class="btn btn-danger btn-pixel-xs">팀장</button>
+                                    <button type="button" class="btn btn-warning btn-pixel-xs">INFJ</button>
+                                    <button type="button" class="btn btn-success btn-pixel-xs"
+                                        onclick="goUrl('https://velog.io/@jinee2021');">BLOG</button>
+                                    <button type="button" class="btn btn-success btn-pixel-xs"
+                                        onclick="goUrl('https://github.com/hyojinkim2028');">GIT</button>
                                 </div>
                             </div>
                         </div>
                         <div class="col">
                             <div class="card">
-                                <img src="https://srv.carbonads.net/static/30242/cfae0bcc9eeb2652dd375b40461352efdb6057ba"
-                                    class="card-img-top" alt="...">
+                                <img src="../sparta/images/A02_고병옥_2.png" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">고병옥</h5>
-                                    <p class="card-text">INTJ</p>
-                                    <p class="card-text"><a href="https://velog.io/@nemolog/231017TIL">BLOG</a></p>
-                                    <p class="card-text"><a href="https://github.com/nemo4">GIT</a></p>
+                                    <button type="button" class="btn btn-warning btn-pixel-xs">INTJ</button>
+                                    <button type="button" class="btn btn-success btn-pixel-xs"
+                                        onclick="goUrl('https://velog.io/@nemolog');">BLOG</button>
+                                    <button type="button" class="btn btn-success btn-pixel-xs"
+                                        onclick="goUrl('https://github.com/nemo4');">GIT</button>
                                 </div>
                             </div>
                         </div>
                         <div class="col">
                             <div class="card">
-                                <img src="https://srv.carbonads.net/static/30242/cfae0bcc9eeb2652dd375b40461352efdb6057ba"
-                                    class="card-img-top" alt="...">
+                                <img src="../sparta/images/A02_유은지_2.png" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">유은지</h5>
-                                    <p class="card-text">INTP</p>
-                                    <p class="card-text"><a href="https://gabojok.tistory.com/181">BLOG</a></p>
-                                    <p class="card-text"><a href="https://github.com/eunji624">GIT</a></p>
+                                    <button type="button" class="btn btn-warning btn-pixel-xs">INTP</button>
+                                    <button type="button" class="btn btn-success btn-pixel-xs"
+                                        onclick="goUrl('https://gabojok.tistory.com/181');">BLOG</button>
+                                    <button type="button" class="btn btn-success btn-pixel-xs"
+                                        onclick="goUrl('https://github.com/eunji624');">GIT</button>
                                 </div>
                             </div>
                         </div>
                         <div class="col">
                             <div class="card">
-                                <img src="https://srv.carbonads.net/static/30242/cfae0bcc9eeb2652dd375b40461352efdb6057ba"
-                                    class="card-img-top" alt="...">
+                                <img src="../sparta/images/A02_하정현_2.png" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">하정현</h5>
-                                    <p class="card-text">INTP</p>
-                                    <p class="card-text"><a href="https://velog.io/@zmjjkk98/JavaScript4">BLOG</a></p>
-                                    <p class="card-text"><a href="https://github.com/zmjjkk98">GIT</a></p>
+                                    <button type="button" class="btn btn-warning btn-pixel-xs">INTP</button>
+                                    <button type="button" class="btn btn-success btn-pixel-xs"
+                                        onclick="goUrl('https://velog.io/@zmjjkk98/JavaScript4');">BLOG</button>
+                                    <button type="button" class="btn btn-success btn-pixel-xs"
+                                        onclick="goUrl('https://github.com/zmjjkk98');">GIT</button>
                                 </div>
                             </div>
                         </div>
                         <div class="col">
                             <div class="card">
-                                <img src="https://srv.carbonads.net/static/30242/cfae0bcc9eeb2652dd375b40461352efdb6057ba"
-                                    class="card-img-top" alt="...">
+                                <img src="../sparta/images/A02_이상권_2.png" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">이상권</h5>
-                                    <p class="card-text">ENTP</p>
-                                    <p class="card-text"><a href="https://lsg8335.tistory.com/">BLOG</a></p>
-                                    <p class="card-text"><a href="https://github.com/sangkwonlee1722">GIT</a></p>
+                                    <button type="button" class="btn btn-warning btn-pixel-xs">ENTP</button>
+                                    <button type="button" class="btn btn-success btn-pixel-xs"
+                                        onclick="goUrl('https://lsg8335.tistory.com/');">BLOG</button>
+                                    <button type="button" class="btn btn-success btn-pixel-xs"
+                                        onclick="goUrl('https://github.com/sangkwonlee1722');">GIT</button>
                                 </div>
                             </div>
                         </div>
@@ -180,17 +203,20 @@
                     <div class="card mb-3">
                         <div class="row">
                             <div class="col-md-4">
-                                <img src="https://srv.carbonads.net/static/30242/cfae0bcc9eeb2652dd375b40461352efdb6057ba"
-                                    class="img-fluid" alt="...">
+                                <img src="../sparta/images/2023-10-26_140155.png" class="img-fluid" alt="...">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <h5 class="card-title">팀공지 원데이 프로젝트</h5>
+                                    <button type="button" class="btn btn-secondary btn-pixel-xs">김효진</button>
+                                    <button type="button" class="btn btn-secondary btn-pixel-xs">고병옥</button>
                                     <p class="card-text">
-                                        <a href="../sparta/231017_A2_miniTeam/2-_-/html/index.html">231017_A2_miniTeam - index.html</a>
+                                        <a href="../sparta/231017_A2_miniTeam/2-_-/html/index.html">231017_A2_miniTeam -
+                                            index.html</a>
                                     </p>
                                     <p class="card-text">
-                                        <a href="../sparta/231017_A2_miniTeam/2-_-/html/board.html">231017_A2_miniTeam - board.html</a>
+                                        <a href="../sparta/231017_A2_miniTeam/2-_-/html/board.html">231017_A2_miniTeam -
+                                            board.html</a>
                                     </p>
                                 </div>
                             </div>
@@ -200,12 +226,12 @@
                     <div class="card mb-3">
                         <div class="row">
                             <div class="col-md-4">
-                                <img src="https://srv.carbonads.net/static/30242/cfae0bcc9eeb2652dd375b40461352efdb6057ba"
-                                    class="img-fluid" alt="...">
+                                <img src="../sparta/images/2023-10-26_140211.png" class="img-fluid" alt="...">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <h5 class="card-title">영화검색 프로젝트</h5>
+                                    <button type="button" class="btn btn-secondary btn-pixel-xs">고병옥</button>
                                     <p class="card-text">
                                         <a href="../sparta/231018_A2_movieSearch/index.html">231018_A2_movieSearch</a>
                                     </p>
@@ -217,14 +243,32 @@
                     <div class="card mb-3">
                         <div class="row">
                             <div class="col-md-4">
-                                <img src="https://srv.carbonads.net/static/30242/cfae0bcc9eeb2652dd375b40461352efdb6057ba"
-                                    class="img-fluid" alt="...">
+                                <img src="../sparta/images/2023-10-26_140224.png" class="img-fluid" alt="...">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <h5 class="card-title">버블링 예시 페이지</h5>
+                                    <button type="button" class="btn btn-secondary btn-pixel-xs">고병옥</button>
                                     <p class="card-text">
                                         <a href="../sparta/231020_A2_bubble/index.html">231020_A2_bubble</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-3">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="../sparta/images/2023-10-26_140339.png" class="img-fluid" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">영화검색 프로젝트 고도화</h5>
+                                    <button type="button" class="btn btn-primary btn-pixel-xs">A02</button>
+                                    <p class="card-text">
+                                        <a href="../sparta/231024_A2_movieSearchGroup/nemo.html">231024_A2_movieSearchGroup
+                                            - nemo.html</a>
                                     </p>
                                 </div>
                             </div>
@@ -233,18 +277,24 @@
                 </div>
             </div>
         </main>
-        
+
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
             <div class="col-md-4 d-flex align-items-center">
                 <p class="text-center text-body-secondary">2023 copyright nemo</p>
             </div>
-        
+
             <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-              <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
-              <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
-              <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
+                <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24">
+                            <use xlink:href="#twitter"></use>
+                        </svg></a></li>
+                <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24">
+                            <use xlink:href="#instagram"></use>
+                        </svg></a></li>
+                <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24">
+                            <use xlink:href="#facebook"></use>
+                        </svg></a></li>
             </ul>
-          </footer>
+        </footer>
     </div>
 </body>
 
