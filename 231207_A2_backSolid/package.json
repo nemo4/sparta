@@ -1,28 +1,14 @@
 {
-  "name": "intermediate",
+  "name": "231207_A2_backSolid",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "dev": "nodemon app.js",
-    "migrate:up": "npx sequelize db:migrate --config config/config.cjs",
-    "migrate:down": "npx sequelize db:migrate:undo --config config/config.cjs",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "bcrypt": "^5.1.1",
-    "dotenv": "^16.3.1",
+    "@prisma/client": "^5.7.0",
     "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.2",
-    "mysql2": "^3.6.3",
-    "sequelize": "^6.34.0"
+    "prisma": "^5.7.0"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1",
-    "sequelize-cli": "^6.6.2"
+    "nodemon": "^3.0.2"
   }
 }
